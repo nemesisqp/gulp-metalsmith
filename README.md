@@ -1,12 +1,11 @@
-# gulp-metalsmith
-Đây là base đơn giản metalsmith, mọi config đều nằm trong file config.js
-# Sử dụng
+### gulp-metalsmith
+### Sử dụng
 ```js
 npm build-dev  // build (không minify)
 npm build-prod // build cho production (có minify)
 npm watch      // watch tự build-dev
 ```
-
+Đây là base đơn giản metalsmith, mọi config đều nằm trong file config.js
 ```js
 const config = {
     contentRoot: './content', // thư mục chứa content file cho metalsmith
