@@ -1,4 +1,4 @@
-### gulp-metalsmith, Sử dụng
+### gulp-metalsmith, sử dụng
 ```js
 npm build-dev  // build (không minify)
 npm build-prod // build cho production (có minify)
