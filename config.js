@@ -1,10 +1,10 @@
 const config = {
-    contentRoot: './content',
-    buildRoot:   './build',
-    layoutRoot:  './layout',
-    styleRoot:   './style',
-    scriptRoot:  './script',
-    staticRoot:  './static',
+    contentRoot: './content', // thư mục chứa content file cho metalsmith
+    buildRoot:   './build',   // thư mục chứa output của metalsmith
+    layoutRoot:  './layout',  // thư mục layout của handlebars
+    styleRoot:   './style',   // thư mục chứa style sass -> buildRoot/css/
+    scriptRoot:  './script',  // thư mục chứa script
+    staticRoot:  './static',  // thư mục chứa script, font, css của các vendor (bootstrap, foundation...)
 
     style: {
         prefix: ['> 1%', 'last 2 versions', 'IE >= 9']

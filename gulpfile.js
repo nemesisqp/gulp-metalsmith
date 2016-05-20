@@ -80,7 +80,7 @@ gulp.task('metalsmith', callback => {
 });
 
 // minify js code, chua concat
-gulp.task('minify-js', () => {
+gulp.task('script-minify', () => {
     return gulp.src(config.scriptRoot + '/**/*')
         .pipe(gulpBlockError())
         .pipe(gulpRename({suffix: '.min'}))
@@ -88,11 +88,11 @@ gulp.task('minify-js', () => {
         .pipe(gulp.dest(config.buildRoot + '/js'));
 });
 
-// hien tai chi chep script output vo build (chua build coffee, typescript gi ca)
+// hien tai chi chep script output vo build/js (chua build coffee, typescript gi ca)
 gulp.task('script', () => {
     return gulp.src(config.scriptRoot + '/**/*')
         .pipe(gulpBlockError())
-        .pipe(gulp.dest(config.buildRoot));
+        .pipe(gulp.dest(config.buildRoot + '/js'));
 });
 
 // build sass
@@ -147,5 +147,8 @@ gulp.task('watch', [], () => {
 });
 
 gulp.task('default', callback => {
-    gulpRunSequence('metalsmith', ['static', 'style', 'minify-js'], callback);
+    if (PROD)
+        gulpRunSequence('metalsmith', ['static', 'style', 'script-minify'], callback);
+    else
+        gulpRunSequence('metalsmith', ['static', 'style', 'script'], callback);
 });
