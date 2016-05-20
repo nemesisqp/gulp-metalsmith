@@ -125,7 +125,7 @@ gulp.task('watch', [], () => {
     // watch thay doi trong layout va content folder -> build metalsmith
     watch([
         config.contentRoot + '/**/*',
-        config.templateRoot + '/**/*'
+        config.layoutRoot + '/**/*'
     ], function () {
         gulp.start(['metalsmith']);
     });

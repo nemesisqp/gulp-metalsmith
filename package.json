@@ -4,10 +4,10 @@
     "description" : "",
     "main"        : "gulpfile.js",
     "scripts"     : {
-        "prod" : "./node_modules/.bin/gulp default",
-        "dev"  : "./node_modules/.bin/gulp default --dev",
-        "watch": "./node_modules/.bin/gulp watch --dev",
-        "test" : "echo \"Error: no test specified\" && exit 1"
+        "build-prod": "./node_modules/.bin/gulp default",
+        "build-dev" : "./node_modules/.bin/gulp default --dev",
+        "watch"     : "./node_modules/.bin/gulp watch --dev",
+        "test"      : "echo \"Error: no test specified\" && exit 1"
     },
     "author"      : "",
     "license"     : "ISC",

@@ -1,10 +1,10 @@
 const config = {
-    contentRoot:  './content',
-    buildRoot:    './build',
-    templateRoot: './layout',
-    styleRoot:    './style',
-    scriptRoot:   './script',
-    staticRoot:   './static',
+    contentRoot: './content',
+    buildRoot:   './build',
+    layoutRoot:  './layout',
+    styleRoot:   './style',
+    scriptRoot:  './script',
+    staticRoot:  './static',
 
     style: {
         prefix: ['> 1%', 'last 2 versions', 'IE >= 9']
@@ -21,8 +21,8 @@ config.metalsmith = {
     'metalsmith-markdown':      {},
     'metalsmith-layouts':       {
         'engine':    'handlebars',
-        'directory': config.templateRoot,
-        'partials':  config.templateRoot + '/partial'
+        'directory': config.layoutRoot,
+        'partials':  config.layoutRoot + '/partial'
     },
     'metalsmith-html-minifier': {
         "_metalsmith_if":        "production",
