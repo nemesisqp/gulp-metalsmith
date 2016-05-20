@@ -1,7 +1,7 @@
 const config = {
-    contentRoot:  './layout',
+    contentRoot:  './content',
     buildRoot:    './build',
-    templateRoot: './content',
+    templateRoot: './layout',
     styleRoot:    './style',
     scriptRoot:   './script',
     staticRoot:   './static',
