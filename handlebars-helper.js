@@ -6,8 +6,9 @@ var moment = require('moment');
 module.exports = function (Handlebars) {
     Handlebars.registerHelper(HandlebarsLayouts(Handlebars));
 
-    // dang ky rivetData helper block cho handlebars
-    // bat buoc key trong meta data cua content phai la 'rivetData'
+    // dang ky rivetData helper block cho handlebars ở đây
+
+    // rivetData helper, bat buoc key trong meta data cua content phai la 'rivetData'
     Handlebars.registerHelper('rivetData', obj => {
         if (obj.data.root.rivetData)
             return JSON.stringify(obj.data.root.rivetData);
