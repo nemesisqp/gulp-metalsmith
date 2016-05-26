@@ -22,15 +22,15 @@ const site = {
 };
 
 site.script = {
-    concat:     true,     // concat == true sẽ nhập các file script lại thành 1 file duy nhất
+    concat:     false,     // concat == true sẽ nhập các file script lại thành 1 file duy nhất
     concatName: 'app.js', // tên của file script sau khi nhập, mặc định là app.js
     files:      [
-        // // jquery
-        // 'bower_components/jquery/dist/jquery.js',
-
-        // // core foundation
-        // 'bower_components/foundation-sites/js/foundation.core.js',
-        // 'bower_components/foundation-sites/js/foundation.util.*.js',
+        // ví dụ
+        // "bower_components/jquery/dist/jquery.js",
+        // "bower_components/what-input/what-input.js",
+        // // Core Foundation files
+        // "bower_components/foundation-sites/js/foundation.core.js",
+        // "bower_components/foundation-sites/js/foundation.util.*.js",
 
         // thêm các file script của site ở đây
         // muốn concat đúng thứ tự thì phải define path
@@ -42,7 +42,11 @@ site.style = {
     sass:         {
         // đường dẫn tơi các thư viện sass, có thể load bằng @import
         includePaths: [
-            'bower_components/foundation-sites/scss'
+			'bower_components'
+            // ví dụ
+            // 'bower_components/foundation-sites/scss',
+            // "bower_components/motion-ui/src",
+            // "bower_components/SpinKit/scss"
         ]
     },
     autoprefixer: {
