@@ -1,7 +1,7 @@
 ```json
 {
     "layout": "index.html",
-	"title": "AAA",
+	"title": "BBBBB",
 	"rivetData": {
 		"body": {
 			"sanpham": [

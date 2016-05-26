@@ -4,11 +4,11 @@ const site = {
     buildRoot:   './build',   // thư mục chứa output của metalsmith
     layoutRoot:  './layout',  // thư mục layout của handlebars
 
-    // thư mục chứa site style
-    // sẽ build vào ${buildRoot}/css/
+    // thư mục chứa style của site, sẽ build vào ${buildRoot}/css/
     styleRoot: './style',
 
-    scriptRoot: './script',   // thư mục chứa site script cho site
+    // thư mục chứa style của site, sẽ build vào ${buildRoot}/js/
+    scriptRoot: './script',
 
     // thư mục chứa các script, css, fonts, image của vendor
     // tât cả sẽ được copy (giữ nguyên câu trúc) qua ${buildRoot}
@@ -22,8 +22,9 @@ const site = {
 };
 
 site.script = {
-    concat: false, // merge các file script lại thành 1 file duy nhất
-    files:  [
+    concat:     true,     // concat == true sẽ nhập các file script lại thành 1 file duy nhất
+    concatName: 'app.js', // tên của file script sau khi nhập, mặc định là app.js
+    files:      [
         // // jquery
         // 'bower_components/jquery/dist/jquery.js',
 
@@ -32,8 +33,8 @@ site.script = {
         // 'bower_components/foundation-sites/js/foundation.util.*.js',
 
         // thêm các file script của site ở đây
-        `${site.scriptRoot}/!(app).js`, // các file có tên khác 'app.js'
-        `${site.scriptRoot}/app.js`
+        // muốn concat đúng thứ tự thì phải define path
+        `${site.scriptRoot}/!(app).js` // các file có tên khác 'app.js'
     ]
 };
 
@@ -44,10 +45,6 @@ site.style = {
             'bower_components/foundation-sites/scss'
         ]
     },
-    uncss:        {
-        html:   ['src/**/*.html'],
-        ignore: [/.foundation-mq/, /^\.is-.*/]
-    },
     autoprefixer: {
         browsers: ['last 2 versions', 'IE >= 9']
     }
@@ -56,37 +53,37 @@ site.style = {
 // define và config các plugin của metalsmith
 site.metalsmith = {
     'metalsmith-drafts':        {
-        'enable': false
+        '_enable': false
     },
     'metalsmith-matters':       {
-        'enable':  true,
+        '_enable': true,
         'delims':  ['```json', '```'],
         'options': {
             'lang': 'json'
         }
     },
     'metalsmith-markdown':      {
-        'enable':      true,
+        '_enable':     true,
         'smartypants': true,
         'smartLists':  true,
         'gfm':         true,
         'tables':      true
     },
     'metalsmith-permalinks':    {
-        'enable':   false,
+        '_enable':  false,
         'pattern':  ':collection/:title',
         'relative': false
     },
     'metalsmith-collections':   {
-        'enable': false,
-        'items':  {
+        '_enable': false,
+        'items':   {
             'pattern': 'items/**/*.md',
             'sortBy':  'date',
             'reverse': true
         }
     },
     'metalsmith-pagination':    {
-        'enable':            false,
+        '_enable':           false,
         'collections.items': {
             'perPage':   6,
             'layout':    'items.html',
@@ -97,13 +94,13 @@ site.metalsmith = {
         }
     },
     'metalsmith-layouts':       {
-        'enable':    true,
+        '_enable':   true,
         'engine':    'handlebars',
-        'directory': config.layoutRoot,
-        'partials':  config.layoutRoot + '/partial'
+        'directory': `${site.layoutRoot}`,
+        'partials':  `${site.layoutRoot}/partial`
     },
     'metalsmith-html-minifier': {
-        'enable':                true,
+        '_enable':               true,
         'removeAttributeQuotes': false,
         'keepClosingSlash':      true
     }
