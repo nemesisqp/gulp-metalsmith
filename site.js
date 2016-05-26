@@ -61,7 +61,7 @@ site.metalsmith = {
     },
     'metalsmith-matters':       {
         '_enable': true,
-        'delims':  ['```json', '```'],
+        'delims':  ['---json', '---'],
         'options': {
             'lang': 'json'
         }
