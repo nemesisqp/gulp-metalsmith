@@ -4,7 +4,7 @@ const PROD = !!(require('yargs').argv.production);
 const site = require('./site');
 const gulp = require('gulp');
 const $ = require('gulp-load-plugins')();
-const browser = require('browser-sync');
+const browser = require('browser-sync')	;
 const Metalsmith = require('metalsmith');
 const Handlebars = require('handlebars');
 require('./handlebars-helper')(Handlebars);
@@ -138,16 +138,21 @@ function server(done) {
 gulp.task('build', gulp.series(metalsmith,
     gulp.parallel(asset, script, sass)));
 
+function reload (done) {
+	browser.reload();
+    done();
+}
+
 function watch() {
     gulp.watch(['gulpfile.js', 'site.js'], gulp.series('build'));
 
-    gulp.watch(`${site.assetRoot}/**/*`, gulp.series(asset, browser.reload));      // watch asset
-    gulp.watch(`${site.styleRoot}/**/*.{scss,sass}`, sass);                        // watch style
-    gulp.watch(`${site.scriptRoot}/**/*.js`, gulp.series(script, browser.reload)); // watch script
+    gulp.watch(`${site.assetRoot}/**/*`, gulp.series(asset, reload));      // watch asset
+    gulp.watch(`${site.styleRoot}/**/*.{scss,sass}`, sass);                // watch style
+    gulp.watch(`${site.scriptRoot}/**/*.js`, gulp.series(script, reload)); // watch script
     gulp.watch([
         `${site.contentRoot}/**/*`,
         `${site.layoutRoot}/**/*`
-    ], gulp.series('build', browser.reload));
+    ], gulp.series('build', reload));
 }
 
 // Build the site, run the server, and watch for file changes
